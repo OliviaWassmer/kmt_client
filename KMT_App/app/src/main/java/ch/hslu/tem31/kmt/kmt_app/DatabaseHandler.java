@@ -1,5 +1,7 @@
 package ch.hslu.tem31.kmt.kmt_app;
 
+import android.icu.util.TimeZone;
+
 /**
  * Created by olivi on 21.10.2016.
  * Klasse in der ich die Kommunikation mit der NoSQL DB auf dem Amazon Cloud Server herstelle.
@@ -7,4 +9,6 @@ package ch.hslu.tem31.kmt.kmt_app;
  */
 
 public class DatabaseHandler {
+
+
 }
