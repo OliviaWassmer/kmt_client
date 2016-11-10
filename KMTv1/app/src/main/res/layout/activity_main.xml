@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.bettinawilli.kmtv1.MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="Menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:layout_marginTop="15dp"
+            android:textColor="@android:color/background_dark" />
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="30dp" />
+
+        <Button
+            android:text="Freitag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/freitagBtn"
+            android:textAlignment="center"
+            android:layout_margin="10dp"
+            android:background="#A53532"
+            android:textColor="@android:color/background_light" />
+
+        <Button
+            android:text="Samstag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/samstagBtn"
+            android:layout_margin="10dp"
+            android:background="#A53532"
+            android:textColor="@android:color/background_light" />
+
+        <Button
+            android:text="Sonntag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sonntagBtn"
+            android:layout_margin="10dp"
+            android:background="#A53532"
+            android:textColor="@android:color/background_light" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="35dp" />
+
+        <Button
+            android:text="Lageplan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lageBtn"
+            android:layout_margin="10dp"
+            android:background="#A53532"
+            android:textColor="@android:color/background_light" />
+
+        <Button
+            android:text="Informationen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/infoBtn"
+            android:layout_margin="10dp"
+            android:background="#A53532"
+            android:textColor="@android:color/background_light" />
+    </LinearLayout>
+</RelativeLayout>
