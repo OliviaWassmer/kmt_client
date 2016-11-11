@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Kreismusiktag 2017</string>
+    <string name="freitag">Freitag, 30. Juni 2017</string>
+    <string name="samstag">Samstag, 1. Juli 2017</string>
+    <string name="sonntag">Sonntag, 2. Juli 2017</string>
+    <string name="lage">Lageplan</string>
+    <string name="info">Informationen</string>
+</resources>
