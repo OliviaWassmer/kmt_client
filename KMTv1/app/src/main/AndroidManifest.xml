@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".activities.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,29 +23,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InfoActivity"
+            android:name=".activities.InfoActivity"
             android:label="@string/info"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".LageplanActivity"
+            android:name=".activities.LageplanActivity"
             android:label="@string/lage"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".FreitagActivity"
+            android:name=".activities.FreitagActivity"
             android:label="@string/freitag"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".SamstagActivity"
+            android:name=".activities.SamstagActivity"
             android:label="@string/samstag"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".SonntagActitvity"
+            android:name=".activities.SonntagActitvity"
             android:label="@string/sonntag"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait"></activity>
     </application>
 
