@@ -19,12 +19,12 @@ public class AWSConfiguration {
 
     // AWS MobileHub user agent string
     public static final String AWS_MOBILEHUB_USER_AGENT =
-        "MobileHub 36c7af9d-f2c9-4e05-af3e-035f1ebce6ee aws-my-sample-app-android-v0.10";
+            "MobileHub 36c7af9d-f2c9-4e05-af3e-035f1ebce6ee aws-my-sample-app-android-v0.10";
     // AMAZON COGNITO
     public static final Regions AMAZON_COGNITO_REGION =
-      Regions.fromName("eu-west-1");
+            Regions.fromName("eu-west-1");
     public static final String  AMAZON_COGNITO_IDENTITY_POOL_ID =
-        "eu-west-1:6a9b92cb-8b1d-4713-8786-198caa362db0";
+            "eu-west-1:6a9b92cb-8b1d-4713-8786-198caa362db0";
     public static final Regions AMAZON_DYNAMODB_REGION =
-       Regions.fromName("eu-central-1");
+            Regions.fromName("eu-central-1");
 }

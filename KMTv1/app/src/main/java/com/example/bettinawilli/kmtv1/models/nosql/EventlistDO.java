@@ -12,7 +12,9 @@ import java.util.Map;
 import java.util.Set;
 
 @DynamoDBTable(tableName = "kmt-mobilehub-125735138-eventlist")
-
+/*
+Ist eigentlich wie Modelklasse, würde dann eigentlich Event heissen da es keine Liste ist.
+ */
 public class EventlistDO {
     private String _userId;
     private String _datum;

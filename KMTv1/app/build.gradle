@@ -26,5 +26,10 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.0.0'
     testCompile 'junit:junit:4.12'
+
     compile('com.amazonaws:aws-android-sdk-core:2.3.3')
+
+    // add the DynamoDB SDK and DynamoDB Object Mapper dependency
+    compile('com.amazonaws:aws-android-sdk-ddb:2.3.3')
+    compile('com.amazonaws:aws-android-sdk-ddb-mapper:2.3.3')
 }

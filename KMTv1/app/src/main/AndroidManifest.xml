@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bettinawilli.kmtv1">
 
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,11 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <uses-permission android:name="android.permission.INTERNET" />
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
-        <activity android:name=".MainActivity"
+        <activity android:name=".activities.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,29 +23,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InfoActivity"
+            android:name=".activities.InfoActivity"
             android:label="@string/info"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".LageplanActivity"
+            android:name=".activities.LageplanActivity"
             android:label="@string/lage"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".FreitagActivity"
+            android:name=".activities.FreitagActivity"
             android:label="@string/freitag"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".SamstagActivity"
+            android:name=".activities.SamstagActivity"
             android:label="@string/samstag"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".SonntagActitvity"
+            android:name=".activities.SonntagActitvity"
             android:label="@string/sonntag"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait"></activity>
     </application>
 
