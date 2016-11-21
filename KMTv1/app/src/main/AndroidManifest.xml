@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,7 +27,9 @@
             android:name=".activities.InfoActivity"
             android:label="@string/info"
             android:parentActivityName=".activities.MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:clickable="true"
+            android:onClick="clickHandlerCell"/>
         <activity
             android:name=".activities.LageplanActivity"
             android:label="@string/lage"
@@ -46,7 +49,11 @@
             android:name=".activities.SonntagActitvity"
             android:label="@string/sonntag"
             android:parentActivityName=".activities.MainActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

@@ -13,10 +13,10 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:id="@+id/listViewFreitag"
         android:divider="#A6A6A6"
-        android:dividerHeight="0.5pt"/>
+        android:dividerHeight="0.5pt"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

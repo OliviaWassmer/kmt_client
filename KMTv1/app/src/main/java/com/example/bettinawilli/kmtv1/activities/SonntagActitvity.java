@@ -2,6 +2,7 @@ package com.example.bettinawilli.kmtv1.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -9,6 +10,7 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBScanExpr
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.PaginatedList;
 import com.example.bettinawilli.kmtv1.R;
 import com.example.bettinawilli.kmtv1.mobile.AWSMobileClient;
+import com.example.bettinawilli.kmtv1.models.nosql.EventsSamstagDO;
 import com.example.bettinawilli.kmtv1.models.nosql.EventsSonntagDO;
 
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ import java.util.List;
 public class SonntagActitvity extends AppCompatActivity {
 
     ListView listViewSonntag;
-    List<String> eventListSonntag = new ArrayList<String>();
+    //List<String> eventListSonntag = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,12 @@ public class SonntagActitvity extends AppCompatActivity {
         //owa_initialisiert
         AWSMobileClient.initializeMobileClientIfNecessary(getApplicationContext());
 
+        //ArrayAdapter für ListView erstellen
+        final ArrayAdapter<String> adapterSonntag = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new ArrayList<String>());
+
+        //Array in ListView abfüllen
+        listViewSonntag.setAdapter(adapterSonntag);
+
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
@@ -37,30 +45,37 @@ public class SonntagActitvity extends AppCompatActivity {
                 PaginatedList<EventsSonntagDO> eventList = client.getDynamoDBMapper().scan(EventsSonntagDO.class, scanExpression);
 
                 //Alle Events aus der DB in eine Liste abfüllen.
+                final ArrayList<String> sonntagList = new ArrayList<String>();
+
+                //Alle Events aus der DB in eine Liste abfüllen.
                 if(eventList.size() > 0) {
                     for(int i=0; i<eventList.size();i++){
-                        setEventDataOnList(eventList.get(i));
+                        setEventDataOnList(sonntagList, eventList.get(i));
                     }
                 } else {
-                    eventListSonntag.add("Keine Events gefunden");
+                    sonntagList.add("Keine Events gefunden");
                 }
+
+                SonntagActitvity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i("bla", "Updating data...");
+                        adapterSonntag.clear();
+                        adapterSonntag.addAll(sonntagList);
+                        adapterSonntag.notifyDataSetChanged();
+                    }
+                });
             }
         };
-
-        //ArrayAdapter für ListView erstellen
-        ArrayAdapter<String> adapterFreitag = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, eventListSonntag);
-
-        //Array in ListView abfüllen
-        listViewSonntag.setAdapter(adapterFreitag);
 
         Thread thread = new Thread(runnable);
         thread.start();
 
     }
 
-    private void setEventDataOnList(EventsSonntagDO event){
+    private void setEventDataOnList(ArrayList<String> sonntagList, EventsSonntagDO event){
 
-        eventListSonntag.add(event.getZeit() + " Uhr: "+ "\t" + "\t" + event.getAct());
+        sonntagList.add(event.getZeit() + " Uhr: "+ "\t" + "\t" + event.getAct());
     }}
 
 

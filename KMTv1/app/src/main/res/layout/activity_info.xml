@@ -14,17 +14,13 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:weightSum="1"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="45dp" />
-
         <Button
-            android:text="Webseite"
+            android:text="Gehe zu Webseite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/webseiteBtn"
@@ -34,36 +30,45 @@
 
         <Space
             android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:text="Rating"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="45dp" />
+            android:id="@+id/ratingTxt"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/listViewInfo"
+            android:layout_height="match_parent"
+            android:divider="#A6A6A6"
+            android:dividerHeight="0.5pt"
+            android:layout_width="match_parent"
+            android:layout_weight="0.83" />
 
         <TextView
             android:text="Autoren"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/infoTxt"
             android:layout_margin="10dp"
             android:textAlignment="center"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_height="26dp" />
 
         <TextView
-            android:text="B. Willi, O. Wassmer, D. Stirnimann"
+            android:text="B. Willi, O. Wassmer, D. Stirnimann, A. Pusch"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="26dp"
             android:id="@+id/textView3"
             android:textAlignment="center" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="45dp" />
+            android:layout_height="20dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView4"
-            android:textAlignment="center"
-            android:textSize="14sp" />
     </LinearLayout>
 </RelativeLayout>
