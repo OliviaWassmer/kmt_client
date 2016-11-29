@@ -38,8 +38,28 @@ public class InfoActivity extends AppCompatActivity  {
 
         //******************GOTO WEBSEITE*****************************************************
 
-        /*
+        Button webseiteBtn = (Button) findViewById(R.id.webseiteBtn);
 
+       webseiteBtn.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View view) {
+                                              Intent intent = new Intent();
+                                              intent.setAction(Intent.ACTION_VIEW);
+                                              intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                                              intent.setData(Uri.parse("http://bmhasliberg.ch/kreismusiktag2017/"));
+                                              startActivity(intent);
+                                          }
+                                      });
+
+        /*
+       }); clickListenerGoToWebseite = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //onklick webseiteBtn welche das macht:
+                Uri uri = Uri.parse("http://bmhasliberg.ch/kreismusiktag2017/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+/*
         //button und onclick listener machen:
         Button webseiteBtn = (Button) findViewById(R.id.webseiteBtn);
 
@@ -50,7 +70,6 @@ public class InfoActivity extends AppCompatActivity  {
                 Uri uri = Uri.parse("http://bmhasliberg.ch/kreismusiktag2017/");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
-
             }
         };
 
@@ -60,10 +79,9 @@ public class InfoActivity extends AppCompatActivity  {
 
         */
 
-
         //**********RATING**************************************************************
 
-        //tabelle mit wettbewerebsanwärtern anzeigen
+        //tabelle mit Wettbewerebsanwärtern anzeigen
         listViewInfo = (ListView) findViewById(R.id.listViewInfo);
 
         AWSMobileClient.initializeMobileClientIfNecessary(getApplicationContext());
