@@ -22,6 +22,7 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.example.bettinawilli.kmtv1.activities.Stimme;
 
 import java.util.ArrayList;
 
@@ -142,11 +143,16 @@ public class InfoActivity extends AppCompatActivity {
     });
     ListEntry entry = (ListEntry) parent.getItemAtPosition(position);
 
+    WettbewerbDO meinGewinner = new WettbewerbDO();
+    Stimme stimme = new Stimme();
+
     //welche zeile resp. objekt wurde geklickt?
 
     //wettbewerbsDO objekt abspeichern
+    meinGewinner = //gewaehlterGewinner welchen wir aus Liste geholt haben;
 
     //auf wettbewerbsDO objekt setzteMeineStimme aufrufen
+    stimme.setzeMeineStimme(meinGewinner);
 
 
     //disable klick auf zeile wenn setzeMeineStimme returns true
