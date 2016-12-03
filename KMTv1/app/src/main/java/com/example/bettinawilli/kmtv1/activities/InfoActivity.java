@@ -115,12 +115,14 @@ public class InfoActivity extends AppCompatActivity {
 
     //**********CLICK RATING ******************************************************************
 
-    //onclick setzeMeineStimme
+    //welche zeile resp. objekt wurde geklickt?
+
+    //wettbewerbsDO objekt abspeichern
+
+    //auf wettbewerbsDO objekt setzteMeineStimme aufrufen
 
 
-
-
-    //disable klick auf zeile wenn stimme gesetted
+    //disable klick auf zeile wenn setzeMeineStimme returns true
 
 
     //***************************************************************************************
