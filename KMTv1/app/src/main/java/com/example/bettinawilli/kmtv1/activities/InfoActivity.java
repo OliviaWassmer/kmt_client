@@ -1,11 +1,13 @@
 package com.example.bettinawilli.kmtv1.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -114,6 +116,31 @@ public class InfoActivity extends AppCompatActivity {
 
 
     //**********CLICK RATING ******************************************************************
+/*
+    public class Rating Activity
+
+ ListView listViewInfo = (ListView) findViewById(R.id.listViewInfo);
+/**
+ * Wir brauchen irgend was ähnliches wie adapter view... Database verknüpfung
+ * anschauen und kucken wie die Tabelle gespeichert ist(naming)
+ */
+    /*
+    listViewInfo.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        @Override
+         
+        }
+    })
+/*listViewInfo.setOnItemClickListener(new OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position,
+        long id) {
+            Intent intent = new Intent(MainActivity.this, SendMessage.class);
+            String message = entry.getMessage();
+            intent.putExtra(EXTRA_MESSAGE, message);
+            startActivity(intent);
+        }
+    });
+    ListEntry entry = (ListEntry) parent.getItemAtPosition(position);
 
     //welche zeile resp. objekt wurde geklickt?
 
