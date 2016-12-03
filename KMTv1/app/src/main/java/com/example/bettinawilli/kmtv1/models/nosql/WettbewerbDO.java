@@ -27,6 +27,7 @@ public class WettbewerbDO {
     public void setUserId(final String _userId) {
         this._userId = _userId;
     }
+
     @DynamoDBAttribute(attributeName = "mg")
     public String getMg() {
         return _mg;
@@ -35,6 +36,7 @@ public class WettbewerbDO {
     public void setMg(final String _mg) {
         this._mg = _mg;
     }
+
     @DynamoDBAttribute(attributeName = "stimmen")
     public Double getStimmen() {
         return _stimmen;
@@ -44,4 +46,7 @@ public class WettbewerbDO {
         this._stimmen = _stimmen;
     }
 
+
+
 }
+

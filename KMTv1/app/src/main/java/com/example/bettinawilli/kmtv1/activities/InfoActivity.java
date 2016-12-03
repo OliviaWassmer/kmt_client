@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
 import com.example.bettinawilli.kmtv1.R;
 
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBScanExpression;
@@ -22,7 +23,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 
-public class InfoActivity extends AppCompatActivity  {
+public class InfoActivity extends AppCompatActivity {
 
     ListView listViewInfo;
     /**
@@ -40,44 +41,17 @@ public class InfoActivity extends AppCompatActivity  {
 
         Button webseiteBtn = (Button) findViewById(R.id.webseiteBtn);
 
-       webseiteBtn.setOnClickListener(new View.OnClickListener() {
-                                          @Override
-                                          public void onClick(View view) {
-                                              Intent intent = new Intent();
-                                              intent.setAction(Intent.ACTION_VIEW);
-                                              intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                                              intent.setData(Uri.parse("http://bmhasliberg.ch/kreismusiktag2017/"));
-                                              startActivity(intent);
-                                          }
-                                      });
-
-        /*
-       }); clickListenerGoToWebseite = new View.OnClickListener() {
+        webseiteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //onklick webseiteBtn welche das macht:
-                Uri uri = Uri.parse("http://bmhasliberg.ch/kreismusiktag2017/");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-/*
-        //button und onclick listener machen:
-        Button webseiteBtn = (Button) findViewById(R.id.webseiteBtn);
-
-        View.OnClickListener clickListenerGoToWebseite = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //onklick webseiteBtn welche das macht:
-                Uri uri = Uri.parse("http://bmhasliberg.ch/kreismusiktag2017/");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("http://bmhasliberg.ch/kreismusiktag2017/"));
                 startActivity(intent);
             }
-        };
+        });
 
-        webseiteBtn.setOnClickListener(clickListenerGoToWebseite);
-
-        clickListenerGoToWebseite.onClick(webseiteBtn);
-
-        */
 
         //**********RATING**************************************************************
 
@@ -115,7 +89,7 @@ public class InfoActivity extends AppCompatActivity  {
                 InfoActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Log.i("blabla", "Updating Info data...");
+                        Log.i("InfoActivity", "Updating Info data...");
                         adapterInfo.clear();
                         adapterInfo.addAll(infoList);
                         adapterInfo.notifyDataSetChanged();
@@ -139,21 +113,10 @@ public class InfoActivity extends AppCompatActivity  {
     }
 
 
-
-
     //**********CLICK RATING ******************************************************************
 
-    //onclick setStimme +1
+    //onclick setzeMeineStimme
 
-    /*
-    private boolean setRating(int stimmePlusEins) {
-        //wenn klick dann plus 1
-
-        //
-        return true;
-    }
-
-     */
 
 
 
@@ -199,8 +162,6 @@ public class InfoActivity extends AppCompatActivity  {
     }
 
     ;
-
-
 
 
 }
