@@ -122,7 +122,7 @@ public class InfoActivity extends AppCompatActivity {
     //welche zeile resp. objekt wurde geklickt?
 
     //wettbewerbsDO objekt abspeichern
-    meinGewinner = //gewaehlterGewinner welchen wir aus Liste geholt haben;
+    meinGewinner = null;//gewaehlterGewinner welchen wir aus Liste geholt haben;
 
     //auf wettbewerbsDO objekt setzteMeineStimme aufrufen
     stimme.setzeMeineStimme(meinGewinner);
