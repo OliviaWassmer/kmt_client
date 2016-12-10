@@ -6,10 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBQueryExpression;
 import com.example.bettinawilli.kmtv1.R;
 
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBScanExpression;
@@ -38,6 +40,8 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
+        AWSMobileClient.initializeMobileClientIfNecessary(getApplicationContext());
+
         //******************GOTO WEBSEITE*****************************************************
 
         Button webseiteBtn = (Button) findViewById(R.id.webseiteBtn);
@@ -53,15 +57,35 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
-
         //**********RATING**************************************************************
 
         //tabelle mit Wettbewerebsanwärtern anzeigen
         listViewInfo = (ListView) findViewById(R.id.listViewInfo);
 
-        AWSMobileClient.initializeMobileClientIfNecessary(getApplicationContext());
-
         final ArrayAdapter<String> adapterInfo = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new ArrayList<String>());
+        listViewInfo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int row, long id) {
+                final String wettbewerbID = (String) adapterView.getItemAtPosition(row);
+
+                //Separater Thread, weil nicht in MainThread sein darf der DB verbindung aufbaut und Daten holt
+                final Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        AWSMobileClient client = AWSMobileClient.defaultMobileClient();
+
+                        //hole angeklickten Wettbewerb aus DB
+                        WettbewerbDO currentWettbewerb = client.getDynamoDBMapper().load(WettbewerbDO.class, wettbewerbID);
+                        //setze die STimmen dieses WEttbewerbs +1
+                        currentWettbewerb.setStimmen(currentWettbewerb.getStimmen() + 1);
+                        //speichere das upgadatete WEttbewerbobjekt
+                        client.getDynamoDBMapper().save(currentWettbewerb);
+                    }
+                };
+                Thread thread = new Thread(runnable);
+                thread.start();
+            }
+        });
 
         listViewInfo.setAdapter(adapterInfo);
 
@@ -114,21 +138,7 @@ public class InfoActivity extends AppCompatActivity {
     }
 
 
-    //**********CLICK RATING ******************************************************************
 
-    WettbewerbDO meinGewinner = new WettbewerbDO();
-    Stimme stimme = new Stimme();
-
-    //welche zeile resp. objekt wurde geklickt?
-
-    //wettbewerbsDO objekt abspeichern
-    meinGewinner = null;//gewaehlterGewinner welchen wir aus Liste geholt haben;
-
-    //auf wettbewerbsDO objekt setzteMeineStimme aufrufen
-    stimme.setzeMeineStimme(meinGewinner);
-
-
-    //disable klick auf zeile wenn setzeMeineStimme returns true
 
 
     //***************************************************************************************
