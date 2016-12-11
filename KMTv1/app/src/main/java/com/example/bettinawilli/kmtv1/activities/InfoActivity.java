@@ -1,6 +1,7 @@
 package com.example.bettinawilli.kmtv1.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBQueryExpression;
 import com.example.bettinawilli.kmtv1.R;
 
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBScanExpression;
@@ -22,7 +22,6 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.example.bettinawilli.kmtv1.activities.Stimme;
 
 import java.util.ArrayList;
 
@@ -62,11 +61,11 @@ public class InfoActivity extends AppCompatActivity {
         //tabelle mit Wettbewerebsanwärtern anzeigen
         listViewInfo = (ListView) findViewById(R.id.listViewInfo);
 
-        final ArrayAdapter<String> adapterInfo = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new ArrayList<String>());
+        final ArrayAdapter<WettbewerbDO> adapterInfo = new ArrayAdapter<WettbewerbDO>(this, android.R.layout.simple_list_item_1, new ArrayList<WettbewerbDO>());
         listViewInfo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int row, long id) {
-                final String wettbewerbID = (String) adapterView.getItemAtPosition(row);
+                final WettbewerbDO wettbewerb = (WettbewerbDO) adapterView.getItemAtPosition(row);
 
                 //Separater Thread, weil nicht in MainThread sein darf der DB verbindung aufbaut und Daten holt
                 final Runnable runnable = new Runnable() {
@@ -75,11 +74,20 @@ public class InfoActivity extends AppCompatActivity {
                         AWSMobileClient client = AWSMobileClient.defaultMobileClient();
 
                         //hole angeklickten Wettbewerb aus DB
-                        WettbewerbDO currentWettbewerb = client.getDynamoDBMapper().load(WettbewerbDO.class, wettbewerbID);
+                        final WettbewerbDO currentWettbewerb = client.getDynamoDBMapper().load(WettbewerbDO.class, wettbewerb.getUserId());
                         //setze die STimmen dieses WEttbewerbs +1
                         currentWettbewerb.setStimmen(currentWettbewerb.getStimmen() + 1);
                         //speichere das upgadatete WEttbewerbobjekt
                         client.getDynamoDBMapper().save(currentWettbewerb);
+                        //Liste blocken nach Wahl
+                        InfoActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                listViewInfo.setEnabled(false);
+                                listViewInfo.setBackgroundColor(Color.LTGRAY);
+
+                            }
+                        });
                     }
                 };
                 Thread thread = new Thread(runnable);
@@ -99,14 +107,14 @@ public class InfoActivity extends AppCompatActivity {
                 PaginatedList<WettbewerbDO> wettbewerbList = client.getDynamoDBMapper().scan(WettbewerbDO.class, scanExpression);
 
                 //lokale liste weil durch innere klasse klassenvariablen neu  instanziert = 0 wird
-                final ArrayList<String> infoList = new ArrayList<String>();
+                final ArrayList<WettbewerbDO> infoList = new ArrayList<WettbewerbDO>();
                 //Alle Events aus der DB in eine Liste abfüllen.
                 if (wettbewerbList.size() > 0) {
                     for (int i = 0; i < wettbewerbList.size(); i++) {
-                        setEventDataOnList(infoList, wettbewerbList.get(i));
+                        infoList.add(wettbewerbList.get(i));
                     }
                 } else {
-                    infoList.add("Keine Musikgruppen gefunden");
+                    //infoList.add("Keine Musikgruppen gefunden");
                 }
 
                 //"DB Thread" darf nicht im UI Zeug machen, darum wieder neuer Thread um DAten von
@@ -131,15 +139,6 @@ public class InfoActivity extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
-
-    private void setEventDataOnList(ArrayList<String> infoList, WettbewerbDO wettbewerb) {
-
-        infoList.add(wettbewerb.getMg());
-    }
-
-
-
-
 
     //***************************************************************************************
 

@@ -43,11 +43,16 @@
 
         <ListView
             android:id="@+id/listViewInfo"
-            android:layout_height="match_parent"
+            android:layout_height="211dp"
             android:divider="#A6A6A6"
             android:dividerHeight="0.5pt"
+            android:layout_width="match_parent" />
+
+        <Button
+            android:text="Wahl aufheben"
             android:layout_width="match_parent"
-            android:layout_weight="0.83" />
+            android:layout_height="wrap_content"
+            android:id="@+id/resetBtn" />
 
         <TextView
             android:text="Autoren"

@@ -46,7 +46,9 @@ public class WettbewerbDO {
         this._stimmen = _stimmen;
     }
 
-
-
+    @Override
+    public String toString() {
+        return _mg;
+    }
 }
 
